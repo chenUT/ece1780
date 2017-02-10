@@ -1,0 +1,5 @@
+[do]
+45.55.73.160
+
+[do:vars] 
+ansible_python_interpreter=/usr/bin/python2.7 

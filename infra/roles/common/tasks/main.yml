@@ -1,0 +1,19 @@
+---
+  
+  - name: Checkout latest code
+    git: repo=https://github.com/chenUT/ece1780.git dest=wb
+    register: git_finished
+
+  - name: Npm install
+    npm: path={{target}}
+    register: npm_finished
+    when: git_finished.changed
+
+  - name: Stop APP First
+    command: pm2 stop {{name}} chdir={{target}}
+    ignore_errors: yes
+    when: npm_finished.changed
+
+  - name: Start APP
+    command: chdir={{target}} pm2 start npm --no-automation --name -- run start:prod {{name}} chdir={{target}}
+    ignore_errors: yes

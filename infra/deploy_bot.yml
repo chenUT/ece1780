@@ -1,0 +1,5 @@
+---
+- hosts: do
+  remote_user: root
+  roles:
+     - { role: common, target: "{{ansible_env.HOME}}/wb", name: "wb" }
