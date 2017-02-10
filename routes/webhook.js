@@ -1,6 +1,7 @@
 const express = require('express');
 const request = require('request');
 let router = express.Router();
+const qas = require('../lib/qa_constants.js');
 
 const token = 'EAAF7ZBlLWrhEBAKDNqanANpssuaLRTyt7Cogf6wcwnI8vQjzgk2FE2UP7u1IEIRzQ85aTRWbWIT2rOp0fZB1GvtqZCTjoImn5sM825tmojmYWk1uehiWmfqdBoq6q4gZCFFS7MifMKjc1sGjzWjTJUZCAgndEZBCXZAhHfyZAke5swZDZD';
 /* GET home page. */
@@ -21,7 +22,7 @@ router.get('/health', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-   console.log('receive message');
+  //  console.log('receive message');
    var messaging_events = req.body.entry[0].messaging;
    try {
     for (let i = 0; i < messaging_events.length; i++) {
@@ -29,9 +30,16 @@ router.post('/', (req, res, next) => {
       var sender = event.sender.id;
       var msg = event.message;
       let msgArr = [];
-      msgArr.push(msg.text);
       if (!msg.is_echo && msg){
-         sendTextMessage(sender, msgArr, 0);
+         let msgText = msg.text.replace(/[^\w\s]/gi, '').toLowerCase().trim();
+         let ans = qas[msgText];
+         if (ans) {
+            msgArr.push(ans);
+            sendTextMessage(sender, msgArr, 0);
+        } else {
+            msgArr.push('I am sorry, I really don\'t know how to answer that. This may sound stupid but I only know 7 sentences in total.');
+            sendTextMessage(sender, msgArr, 0);
+        }
       }
     }
    } catch (e) {
@@ -42,11 +50,9 @@ router.post('/', (req, res, next) => {
 
 
 function sendTextMessage(sender, texts, index) {
-console.log('1');
   if (index === texts.length) {
     return;
   }
-console.log('1');
   let messageData = {
     text: texts[index]
   };
