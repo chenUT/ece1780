@@ -52,11 +52,11 @@ if (isDev) {
 
   logger.appStarted(443);
   // handles acme-challenge and redirects to https
-  const httpPort = 80;
+//   const httpPort = 3000;
 
-  require('http').createServer(lex.middleware(require('redirect-https')())).listen(httpPort, function () { // eslint-disable-line 
-    console.log('Listening for ACME http-01 challenges on', this.address());
-  });
+//   require('http').createServer(lex.middleware(require('redirect-https')())).listen(httpPort, function () { // eslint-disable-line 
+//     console.log('Listening for ACME http-01 challenges on', this.address());
+//   });
 
   // handles your app
   require('https').createServer(lex.httpsOptions, lex.middleware(app)).listen(443, function () { // eslint-disable-line 
