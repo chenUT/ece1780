@@ -1,8 +1,8 @@
 const express = require('express');
+const request = require('request');
 let router = express.Router();
 
-const token = 'EAAF7ZBlLWrhEBAHub4HdA06nrHgW6PNei9lRJgcjaLyXFpv1Nk7IReRpceBtnM7GHS0kODWKS2ZCxrWg7XL2upgbqrZCV2ZCOVeJ4hqzvcCZAZBXiH1OZAlKNfNHXSgo8VDc82hm27dOy1b8isBTXhAEIGZBZAdsPovzwZCNEsf5rEGwZDZD';
-
+const token = 'EAAF7ZBlLWrhEBAKDNqanANpssuaLRTyt7Cogf6wcwnI8vQjzgk2FE2UP7u1IEIRzQ85aTRWbWIT2rOp0fZB1GvtqZCTjoImn5sM825tmojmYWk1uehiWmfqdBoq6q4gZCFFS7MifMKjc1sGjzWjTJUZCAgndEZBCXZAhHfyZAke5swZDZD';
 /* GET home page. */
 router.get('/', function (req, res, next) {
   if (req.query['hub.verify_token'] === 'ece1780_test_token_62378461238461238') {
@@ -22,16 +22,17 @@ router.get('/health', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
    console.log('receive message');
-  var messaging_events = req.body.entry[0].messaging;
-   console.log(JSON.stringify(messaging_events, null ,2));
+   var messaging_events = req.body.entry[0].messaging;
    try {
     for (let i = 0; i < messaging_events.length; i++) {
       var event = messaging_events[i];
       var sender = event.sender.id;
       var msg = event.message;
-      console.log(msg);
-      sendTextMessage(sender, msg);
-      return;
+      let msgArr = [];
+      msgArr.push(msg.text);
+      if (!msg.is_echo && msg){
+         sendTextMessage(sender, msgArr, 0);
+      }
     }
    } catch (e) {
 
@@ -41,12 +42,14 @@ router.post('/', (req, res, next) => {
 
 
 function sendTextMessage(sender, texts, index) {
+console.log('1');
   if (index === texts.length) {
     return;
   }
+console.log('1');
   let messageData = {
     text: texts[index]
-  }
+  };
   let indexPlusOne = (index + 1);
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -61,11 +64,11 @@ function sendTextMessage(sender, texts, index) {
     if (error) {
       // console.log('Error sending message: ');
       // console.log('Error sending message: ', error);
-      logger.error('Error sending message', JSON.stringify(error));
+      console.log('Error sending message', JSON.stringify(error));
     } else if (response.body.error) {
       // console.log('Error: !');
       // console.log('Error: ', response.body.error);
-      logger.error('Error', JSON.stringify(response.body.error));
+      console.log('Error', JSON.stringify(response.body.error));
     } else {
       sendTextMessage(sender, texts, indexPlusOne);
     }
