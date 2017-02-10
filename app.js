@@ -33,7 +33,7 @@ if (isDev) {
   });
 } else {
   // returns an instance of node-letsencrypt with additional helper methods
-  const lex = require('letsencrypt-express').create({ // eslint-disable-line 
+  const lex = require('greenlock-express').create({ // eslint-disable-line 
     // set to https://acme-v01.api.letsencrypt.org/directory in production
     // server: 'staging'
     server: 'https://acme-v01.api.letsencrypt.org/directory',
