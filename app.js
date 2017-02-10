@@ -1,6 +1,9 @@
 const express = require('express');
 const logger = require('./logger');
 const argv = require('minimist')(process.argv.slice(2));
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
 const app = express();
 
 const webhook = require('./routes/webhook.js');
@@ -10,6 +13,9 @@ const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngr
 // get the intended port number, use port 3000 if not provided
 const port = argv.port || process.env.PORT || 3000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use('/webhook', webhook);
 
 if (isDev) {

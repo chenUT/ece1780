@@ -12,12 +12,12 @@
   - name: Stop APP First
     command: pm2 stop {{name}} chdir={{target}}
     ignore_errors: yes
-    when: npm_finished.changed
+    when: git_finished.changed
   
   - name: Delete APP if necessary
     command: pm2 delete {{name}} chdir={{target}}
     ignore_errors: yes
-    when: npm_finished.changed
+    when: git_finished.changed
 
   - name: Start APP
     command: chdir={{target}} pm2 start npm --no-automation --name {{name}} -- run start:prod
