@@ -15,5 +15,5 @@
     when: npm_finished.changed
 
   - name: Start APP
-    command: chdir={{target}} pm2 start npm --no-automation --name -- run start:prod {{name}} chdir={{target}}
+    command: chdir={{target}} pm2 start npm --no-automation --name {{name}} -- run start:prod  chdir={{target}}
     ignore_errors: yes
