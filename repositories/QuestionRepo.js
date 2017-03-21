@@ -1,9 +1,9 @@
 
-const dbConstants = require('../constants/dbConstants.js');
+const constants = require('../constants/constants.js');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-let db = mongoose.createConnection(`${dbConstants.url}/${dbConstants.name}`);
+let db = mongoose.createConnection(`${constants.dbUrl}/${constants.dbName}`);
 
 const QuestionSchema = new mongoose.Schema({
     question: String,
