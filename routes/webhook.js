@@ -31,14 +31,21 @@ router.post('/', (req, res, next) => {
       var sender = event.sender.id;
       var msg = event.message;
       let msgArr = [];
-      if (!msg.is_echo && msg){
+      if (msg && !msg.is_echo){
         let msgText = msg.text.replace(/[^\w\s]/gi, '').toLowerCase().trim();
-         
         nlpApi.parseSentence(msgText)
           .then(function(result){
-            sendTextMessage(sender, [result.answer], 0)
+            // console.log('result ');
+            // console.log(result);
+            if (result.score < 1) {
+              msgArr.push('I am sorry, I really don\'t know how to answer that. Please be more specific about your question.');
+              sendTextMessage(sender, msgArr, 0);
+            } else {
+              let answerArray = getMessageArray(result.answer);
+              sendTextMessage(sender, answerArray, 0);
+            }
           }, function (error){
-            console.log(error);
+             console.log(error);
              msgArr.push('I am sorry, I really don\'t know how to answer that. This may sound stupid but I only know 7 sentences in total.');
              sendTextMessage(sender, msgArr, 0);
           }).catch(e => {console.log(e)})
@@ -53,11 +60,23 @@ router.post('/', (req, res, next) => {
       }
     }
    } catch (e) {
-
+     console.log(e);
    }
    res.sendStatus(200);
 });
 
+function getMessageArray(message) {
+  if (message.length < 641) {
+    return [message];
+  }
+  let chunkCount = Math.ceil(message.length/640);
+  let i = 0;
+  let messages = [];
+  for (; i < chunkCount; i++) {
+      messages.push(message.substring(i*640, (i+1)*640));
+  }
+  return messages;
+}
 
 function sendTextMessage(sender, texts, index) {
   if (index === texts.length) {
