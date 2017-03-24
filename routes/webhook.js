@@ -40,7 +40,7 @@ router.post('/', (req, res, next) => {
            threadState.stateTopic(sender, result.categories);
            sendQRMsg(sender, result.categories);
         }, error => {
-           sendTextMessage(sender, ['Oops, somethign went wrong :(.'], 0);
+           sendTextMessage(sender, ['Oops, something went wrong :(.'], 0);
         });
       } else if (msg && !msg.is_echo){
         // check current state
