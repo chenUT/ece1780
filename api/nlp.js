@@ -6,7 +6,7 @@ const constants = require("../constants/constants.js");
 function parseSentence (text, category){
     let url = `${constants.brainUrl}/qa`;
     if (category) {
-      url = `${constants.brainUrl}/qa?category=${category}`;
+      url = `${constants.brainUrl}/qa?category=${encodeURIComponent(category)}`;
     }
 
     return new Promise(function (resolve, reject){
