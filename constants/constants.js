@@ -7,7 +7,6 @@ let brainUrl = 'http://localhost:8080';
 if (!isDev) {
     dbUrl = 'mongodb://localhost';
     brainUrl = 'http://138.197.64.93:8080';
-    brainUrl = 'http://localhost:8080';
 }
 
 module.exports = {
