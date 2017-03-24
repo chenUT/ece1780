@@ -6,13 +6,13 @@ const constants = require("../constants/constants.js");
 function parseSentence (text, category){
     let url = `${constants.brainUrl}/qa`;
     if (category) {
-      url = `${constants.brainUrl}/qa?category=category`;
+      url = `${constants.brainUrl}/qa?category=${category}`;
     }
 
     return new Promise(function (resolve, reject){
         var options = { method: 'GET',
             url: url,
-            qs: { question: `${text}` },
+            qs: { question: text },
             headers: { 
                     'cache-control': 'no-cache',
                     authorization: 'super_secure_token_IaqqmVVNrX2R7zm_IDcgzQPPrgcoFrcKF25l' 
