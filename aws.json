@@ -1,0 +1,102 @@
+"qaList":[
+	  {
+	  	"question": "How should my academic transcripts be submitted?",
+	  	"answer":"Applicants should ask each university attended to send their academic transcripts directly to the department (graduate unit) to which they are applying in a sealed and, preferably signed envelope. The envelope should be signed and stamped by the registrar or by an authorized official of your school/college/university. \n\nDo not send transcripts to the School of Graduate Studies."
+	  },
+      {
+        "question": "What is Amazon Machine Learning?",
+        "answer": "Amazon Machine Learning is a machine service that allows you to easily build predictive applications, including fraud detection, demand forecasting, and click prediction. Amazon Machine Learning uses powerful algorithms that can help you create machine learning models by finding patterns in existing data, and using these patterns to make predictions from new data as it becomes available. The AWS Management Console and API provide data and model visualization tools, as well as wizards to guide you through the process of creating machine learning models, measuring their quality and fine-tuning the predictions to match your application requirements. Once the models are created, you can get predictions for your application by using the simple API, without having to implement custom prediction generation code or manage any infrastructure. Amazon Machine Learning is highly scalable and can generate billions of predictions, and serve those predictions in real-time and at high throughput. With Amazon Machine Learning there is no setup cost and you pay as you go, so you can start small and scale as your application grows."
+      },
+      {
+        "question": "What can I do with Amazon Machine Learning?",
+        "answer": "You can use Amazon Machine Learning to create a wide variety of predictive applications. For example, you can use Amazon Machine Learning to help you build applications that flag suspicious transactions, detect fraudulent orders, forecast demand, personalize content, predict user activity, filter reviews, listen to social media, analyze free text, and recommend items."
+      },
+      {
+        "question": "What is machine learning?",
+        "answer": "Machine learning (ML) is a technology that helps you use historical data to make informed business decisions. ML algorithms discover patterns in data and construct mathematical models using these patterns. Then, you can use the models to make predictions on future data. For example, one possible application of machine learning is detecting fraudulent transactions based on examples of both successful and failed past purchases."
+      },
+      {
+        "question": "How do I get started with Amazon Machine Learning?",
+        "answer": "The best way to get started with Amazon Machine Learning is to follow the tutorial in the Amazon Machine Learning Developer Guide. The tutorial guides you through creating a machine learning model from a sample dataset, evaluating this model, and using it to create predictions. After completing the tutorial, you can use Amazon Machine Learning to create your own ML models. For more information, see the Amazon Machine Learning Developer Guide and the Amazon Machine Learning API Reference."
+      },
+      {
+        "question": "What is training data?",
+        "answer": "Training data is used to create machine learning models. It consists of known data points from the past. You can use Amazon Machine Learning to extract patterns from this data, and use them to build machine learning models."
+      },
+      {
+        "question": "What is the target attribute?",
+        "answer": "The target attribute is a special attribute in the training data that contains the information that Amazon Machine Learning attempts to predict. For example, let’s say you want to build a model that predicts whether a transaction is fraudulent or not. Your training data contains metadata on a past transaction that has a target attribute of “1” if the transaction was ultimately declined by the bank, or “0” otherwise. You use Amazon Machine Learning to discover patterns that connect the target attribute with the transaction metadata (all other attributes). You use ML models based on these patterns to make a prediction without the target attribute present. In this example, it means predicting whether a transaction is fraudulent based on its metadata, before knowing whether the bank will reject it or not."
+      },
+      {
+        "question": "What algorithm does Amazon Machine Learning use to generate models?",
+        "answer": "Amazon Machine Learning currently uses an industry-standard logistic regression algorithm to generate models."
+      },
+      {
+        "question": "In which AWS regions is Amazon Machine Learning available?",
+        "answer": "For a list of the supported Amazon Machine Learning AWS regions, please visit the AWS Region Table for all AWS global infrastructure.  Also for more information, see Regions and Endpoints in the AWS General Reference."
+      },
+      {
+        "question": "What is the service availability of Amazon Machine Learning?",
+        "answer": "Amazon Machine Learning is designed for high availability. There are no maintenance windows or scheduled downtimes. The API for model training, evaluation, and batch prediction runs in Amazon’s proven, high-availability data centers, with service stack replication configured across three facilities in each AWS region to provide fault tolerance in the event of a server failure or Availability Zone outage."
+      },
+      {
+        "question":"What security measures does Amazon Machine Learning have?",
+        "answer":"Amazon Machine Learning ensures that ML models and other system artifacts are encrypted in transit and at rest. Requests to the Amazon Machine Learning API and console are made over a secure (SSL) connection. You can use AWS Identity and Access Management (AWS IAM) to control which IAM users have access to specific Amazon Machine Learning actions and resources."
+      }, 
+      {
+          "question":"Where do I store my data?",
+          "answer":"You can use Amazon Machine Learning to read your data from three data stores: (a) one or more files in Amazon S3, (b) results of an Amazon Redshift query, or (c) results of an Amazon Relational Database Service (RDS) query when executed against a database running with the MySQL engine. Data from other products can usually be exported into CSV files in Amazon S3, making it accessible to Amazon Machine Learning. For detailed instructions for configuring permissions that enable Amazon Machine Learning to access the supported data stores, see the Amazon Machine Learning Developer Guide."
+      },
+            {
+          "question":"Are there limits to the size of the dataset I can use for training?",
+          "answer":"Amazon Machine Learning can train models on datasets up to 100 GB in size."
+      },
+        {
+          "question":"How do I know if my data has errors?",
+          "answer":"You can use Amazon Machine Learning to detect data formatting errors. The data insights feature of the Amazon Machine Learning service console helps you find deeper errors within your data—for example, fields that are empty or contain unexpected values. Amazon Machine Learning will be able to train ML models and generate accurate predictions in the presence of a small number of both kinds of data errors, enabling your requests to succeed even if some data observations are invalid or incorrect."
+      },
+        {
+          "question":"What do I do if my data is incomplete or some information is missing?",
+          "answer":"It is always best to ensure that your data is as complete and accurate as possible. The learning algorithms of Amazon Machine Learning tolerates small amounts of incomplete or missing information without it adversely affecting model quality; as the number of mistakes increases, the resulting model quality will be degraded. Amazon Machine Learning stops processing your model training request if the number of records that fail processing is greater than either 10,000 or 10% of all records in the dataset, whichever comes first. To correct incomplete or missing information, you need to return to the master datasource and either correct the data in that source, or exclude the observations with incomplete or missing information from the datasets used to train Amazon Machine Learning models. For example, if you find that some rows in an Amazon Redshift table contain invalid values, you can modify the query used to select data for Amazon Machine Learning to exclude these rows."
+      },
+      {
+          "question":"How do I know if my model is giving accurate predictions?",
+          "answer":"Amazon Machine Learning includes powerful model evaluation features. You can use Amazon Machine Learning to compute an industry-standard evaluation metric for any of your models, helping you understand these models’ predictive quality. You can also use Amazon Machine Learning to ensure that the model evaluation is unbiased by choosing to withhold a part of the training data for evaluation purposes, ensuring that the model is never evaluated with data points that were seen at the training time. The Amazon Machine Learning service console provides powerful, easy-to-use tools to explore and understand the results of model evaluations."
+      },
+      {
+          "question":"How do I tune my model if it isn’t giving the results I want?",
+          "answer":"The best way to increase a model’s quality is by using more and higher-quality data to train it. Adding more observations, adding additional types of information (features), and transforming your data to optimize the learning process (feature engineering) are all great ways to improve the model’s predictive accuracy. You can use Amazon Machine Learning to create many prototype models, and you can use the built-in data processors of Amazon Machine Learning to make several common types of feature engineering as simple as editing a line in the built-in “recipe” language. Additionally, Amazon Machine Learning can automatically create a suggested data transformation recipe based on your data when you create a new datasource object pointing to your data—this recipe will be automatically optimized based on your data contents.Amazon Machine Learning also provides several parameters for tuning the learning process: (a) target size of the model, (b) the number of passes to be made over the data, and (c) the type and amount of regularization to apply to the model. The default settings of Amazon Machine Learning works well for many real-world ML tasks, but can be adjusted as needed by using either the service console or API. Finally, one important aspect of model tuning to consider is how predictions generated by your ML model are interpreted by your application, to align them optimally with the business goals. Amazon Machine Learning helps you adjust the interpretation cut-off score for binary classification models, enabling you to make an informed trade-off between different kinds of mistakes that a trained model can make. For example, some applications are very tolerant of false positive errors, but false negative errors are highly undesirable—the Amazon Machine Learning service console helps you adjust the score cut-off to align with this requirement. For more information, see Evaluating ML Models in the Amazon Machine Learning Developer Guide."
+      },
+      {
+          "question":"Can I export my models out of Amazon Machine Learning?",
+          "answer":"No"
+      },
+      {
+          "question":"Can I import existing models into Amazon Machine Learning?",
+          "answer":"No"
+      },
+      {
+          "question":"Does Amazon Machine Learning need to make a permanent copy of my data to create machine learning models?",
+          "answer":"No. Amazon Machine Learning need only read-access to your data to find and extract the patterns within it, and store them within ML models. ML models are not copies of your data. When accessing data stored in Amazon Redshift or Amazon RDS, Amazon Machine Learning will export the query results into an S3 location of your choice, and then read these results from S3. You will retain full ownership of this temporary data copy, and will be able to remove it after the Amazon Machine Learning operation is completed."
+      },
+         {
+          "question":"Once my model is ready, how do I get predictions for my applications?",
+          "answer":"You can use Amazon Machine Learning to retrieve predictions in two ways: using the batch API or real-time API. The batch API is used to request predictions for a large number of input data records—it works offline, and returns all the predictions at once. The real-time API is used to request predictions for individual input data records, and returns the predictions immediately. The real-time API can be used at high throughput, generating multiple predictions at the same time in response to parallel requests. Any ML model built with Amazon Machine Learning can be used through either the batch API or real-time API—the choice is yours, and depends only on your application’s requirements. You typically use the batch API for applications that operate on bulk data records, and the real-time API for interactive web, mobile and desktop applications."
+      },
+      {
+          "question":"How fast can the Amazon Machine Learning real-time API generate predictions?",
+          "answer":"Most real-time prediction requests return a response within 100 MS, making them fast enough for interactive web, mobile, or desktop applications. The exact time it takes for the real-time API to generate a prediction varies depending on the size of the input data record, and the complexity of the data processing “recipe” associated with the ML model that is generating the predictions."
+      },
+      {
+          "question":"How many concurrent real-time API requests does Amazon Machine Learning support?",
+          "answer":"Each ML model that is enabled for real-time predictions is assigned an endpoint URL. By default, you can request up to 200 transactions per second (TPS) from any real-time prediction endpoint. Contact customer support if this limit is not sufficient for your application’s needs."
+      },
+      {
+          "question":"How quickly can Amazon Machine Learning return batch predictions?",
+          "answer":"The batch prediction API is fast and efficient. The time it takes to return the batch prediction results depends on several factors, including (a) the size of the input data, (b) the complexity of the data processing “recipe” associated with the ML model that is generating the predictions, and (c) the number of other batch jobs (data processing, model training, evaluation, and other batch processing requests) that are simultaneously running in your account, among others. By default, Amazon Machine Learning executes up to five batch jobs simultaneously. Contact customer support if this limit is not sufficient for your application’s needs."
+      },
+      {
+          "question":"How can I monitor how my predictions are performing?",
+          "answer":"Monitoring your prediction performance takes two primary forms: (a) monitoring the volume of batch and real-time prediction traffic, and (b) monitoring the quality of the predictive models. You can monitor the volume of your prediction traffic by consulting the Amazon CloudWatch metrics that are published by Amazon Machine Learning into your CloudWatch account. For each ML model ID that has received either batch or real-time predictions during the monitoring period, Amazon Machine Learning will publish the number of data records for which predictions were successfully generated, and the number of ML records that failed parsing, resulting in no prediction being generated. To monitor the quality of your ML model over time, an industry best practice is to regularly capture a random sample of data records that have been submitted by your application for prediction, obtain true answers (also known as “targets”), and then use Amazon Machine Learning to create an evaluation of the resulting dataset. Amazon Machine Learning will compute a model quality metric by comparing the targets with the predictions being generated. If you find that the quality of the metrics is decreasing over time, it is likely an indicator that you need to train a new model with new data points, as the data that was originally used to train a model is no longer matching the real world. For example, if you use your ML model to detect fraudulent transactions, you might find that its quality drops over time because new methods of transaction fraud, not known at the time of model training, have appeared. You can counter this trend by training a new ML model, with examples of the latest fraudulent transactions, enabling Amazon Machine Learning to discover the patterns that identify these transactions, among others."
+      }
+	]
