@@ -64,7 +64,7 @@ router.post('/', (req, res, next) => {
           nlpApi.parseSentence(msgText, currState.topic)
             .then(function(result){
               // console.log('result ');
-              // console.log(result);
+              console.log(result);
               if (result.score < 1) {
                 msgArr.push('I am sorry, I really don\'t know how to answer that. Please be more specific about your question.');
                 sendTextMessage(sender, msgArr, 0);
